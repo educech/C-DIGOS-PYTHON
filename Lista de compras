@@ -1,0 +1,33 @@
+#selecionar os itens
+itens = [] # lista temporária, será limpada a cada iten colocada
+total = [] # guardará todos os valores da quantidade de itens * preço
+tudo = [] # Vai guardar todos os produtos da lista
+
+while True:
+    itens.clear() # sempre vai limpar o iten da lista caso queira adicionar outro
+    n = (str(input("Item: "))) # adicionar itens na lista
+
+    while n.isnumeric():
+        print('DIGITE UM NUMERO')
+        n = (str(input("Item: ")))  # adicionar itens na lista
+    itens.append(n)
+    tudo.append(n)
+
+    for c in range(len(itens)): # para cada iten na lista iten adicionar preço e quantidade
+        preco = (float(input(f"Valor do {itens[c]}: "))) # valor
+        qtd_itens = (int(input(f"Quantidade de {itens[c]}: "))) #quantidade
+        total += [(qtd_itens * preco)] #adicionar a lista [total] o valor do iten multiplicado pela quantidade de itens
+        soma = sum(total)
+        print(f'VALOR PARCIAL: R$ {soma:.2f}') # valor parcial da comrpra
+        
+    escolha = str(input("Adicionar item?[S/N]\n")).upper().strip().split()[0]
+    while escolha not in 'NÃO''SIM':  # enquanto escolha não for N ou S vai pedir pra digitar novamente
+        escolha = str(input("Adicionar item?[S/N]\n")).upper().strip().split()[0]
+    if escolha in 'NÃO''não''Não''N':  # se escolha for N vai parar
+        break
+#soma
+soma = sum(total)
+print(f"TOTAL DA COMPRA: {soma:.2f} R$\n")
+print(f'Itens: {tudo}\n')
+l = str(input('APERTE UMA TECLA PARA FINALIZAR.....'))
+print('FIM')
